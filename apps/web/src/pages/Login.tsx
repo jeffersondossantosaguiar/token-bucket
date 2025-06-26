@@ -16,6 +16,7 @@ const Login = () => {
       (resp) => {
         const token = resp.login?.token;
         if (token) {
+          //TODO Verificar se isso é a melhor maneira de salvar o token
           localStorage.setItem("token", token);
           navigate("/");
         } else {
