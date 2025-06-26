@@ -33,7 +33,7 @@
 ### 💻 Frontend (React + Relay)
 
 - [x] Criar projeto React com TypeScript
-- [ ] Configurar Eslint ou outra ferramenta de lint
+- [x] Configurar Eslint ou outra ferramenta de lint
 - [ ] Criar pagina de login
   - [x] Criar esqueleto
   - [x] Funcionalidades
@@ -42,9 +42,10 @@
   - [x] Criar esqueleto
   - [x] Funcionalidades
   - [ ] CSS
-- [ ] Configurar autenticação com Bearer Token
-- [ ] Criar Home para consulta pix (formulário de consulta):
+- [x] Configurar autenticação com Bearer Token
+- [x] Criar Home para consulta pix (formulário de consulta):
 - [x] Configurar React Relay
-- [ ] Criar mutation para iniciar consulta Pix
+- [x] Criar query para consulta Pix
   - [ ] Exibir resultado da transação (sucesso/erro)
   - [ ] Adicionar feedback visual e validações
+- [ ] Verificar como faz para tratar os erros no Relay já que ele não exporte `errors` apenas o `data` da consulta.
