@@ -6,17 +6,16 @@ import { tokenBucket } from './strategy/token-bucket.js';
 import { Bucket, PixKey, PixType } from './types.js';
 import { MAX_TOKENS, TTL_SECONDS } from './utils/constants.js';
 
-function findPixKeyByValue(
-  value: string
-): PixKey | undefined {
-  return keys.find(key => key.key === value);
+function findPixKeyByValue(value: string): PixKey | undefined {
+  return keys.find((key) => key.key === value);
 }
 
 export async function updateBucket(key: string, bucket: Bucket) {
   await redisClient.set(key, JSON.stringify(bucket), {
     expiration: {
-      type: 'EX', value: TTL_SECONDS
-    }
+      type: 'EX',
+      value: TTL_SECONDS,
+    },
   });
 }
 
@@ -29,7 +28,7 @@ export async function getBucket(key: string): Promise<Bucket> {
 
   const newBucket: Bucket = {
     tokens: MAX_TOKENS,
-    lastRefill: Math.floor(Date.now() / 1000) // timestamp in seconds
+    lastRefill: Math.floor(Date.now() / 1000), // timestamp in seconds
   };
 
   await updateBucket(key, newBucket);
@@ -43,8 +42,7 @@ export async function keyCheck(userId: string, key: string) {
 
   userBucket = tokenBucket(userBucket);
 
-  if (userBucket.tokens < 1)
-    throw new Error('Rate limit exceeded. Please try again later.');
+  if (userBucket.tokens < 1) throw new Error('Rate limit exceeded. Please try again later.');
 
   const pixKey = findPixKeyByValue(key);
 
@@ -62,12 +60,12 @@ export const pixResolvers = {
   keyCheck: {
     type: PixType,
     args: {
-      key: { type: new GraphQLNonNull(GraphQLString) }
+      key: { type: new GraphQLNonNull(GraphQLString) },
     },
     resolve: requireAuth(async (_parentValue, { key }, ctx) => {
       const { user } = ctx;
       return await keyCheck(user.id, key);
     }),
-    description: 'Check if a Pix key exists'
-  } as GraphQLFieldConfig<any, any>
+    description: 'Check if a Pix key exists',
+  } as GraphQLFieldConfig<any, any>,
 };

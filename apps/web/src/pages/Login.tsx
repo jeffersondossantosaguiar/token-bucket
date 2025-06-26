@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link, useNavigate } from "react-router";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router';
 import AuthLayout from '../components/AuthLayout';
 import { loginCommit } from '../mutations/LoginMutation';
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -17,18 +17,18 @@ const Login = () => {
         const token = resp.login?.token;
         if (token) {
           //TODO Verificar se isso é a melhor maneira de salvar o token
-          localStorage.setItem("token", token);
-          navigate("/");
+          localStorage.setItem('token', token);
+          navigate('/');
         } else {
-          alert("Erro no login");
+          alert('Erro no login');
         }
-      }, (err) => {
+      },
+      (err) => {
         console.error(err);
-        alert("Falha na requisição de login");
+        alert('Falha na requisição de login');
       }
     );
   };
-
 
   return (
     <AuthLayout>
@@ -51,7 +51,7 @@ const Login = () => {
         <button type="submit">Entrar</button>
       </form>
       <p>
-        Don't have an account? <Link to='/register'>Register</Link>
+        Don&apos;t have an account? <Link to="/register">Register</Link>
       </p>
     </AuthLayout>
   );

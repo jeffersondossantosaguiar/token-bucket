@@ -20,9 +20,10 @@ app.use(
       schema,
       graphiql: config.NODE_ENV !== 'production',
       context: {
-        user: ctx.state.user
-      }
-    })),
-  ));
+        user: ctx.state.user,
+      },
+    }))
+  )
+);
 
 export default app;

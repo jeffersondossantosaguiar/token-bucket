@@ -11,7 +11,7 @@ export const userResolvers = {
     type: UserType,
     resolve: requireAuth(async (_parentValue, _args, ctx) => {
       return await prismaClient.user.findUnique({ where: { id: ctx.user.id } });
-    })
+    }),
   } as GraphQLFieldConfig<any, any>,
   login: {
     type: TokenType,
@@ -26,11 +26,9 @@ export const userResolvers = {
         throw new Error('Unauthorized');
       }
 
-      const token = jwt.sign(
-        { id: user.id, email: user.email },
-        config.JWT_SECRET,
-        { expiresIn: '1d' }
-      );
+      const token = jwt.sign({ id: user.id, email: user.email }, config.JWT_SECRET, {
+        expiresIn: '1d',
+      });
 
       return { token };
     },
@@ -44,8 +42,7 @@ export const userResolvers = {
     resolve: async (_parent, { email, password }) => {
       const existingUser = await prismaClient.user.findUnique({ where: { email } });
 
-      if (existingUser)
-        throw new Error('User already exists!');
+      if (existingUser) throw new Error('User already exists!');
 
       const hashedPassword = await bcrypt.hash(password, 10);
 

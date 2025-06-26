@@ -4,7 +4,6 @@ import userSchema from './modules/user/schema.js';
 
 const schema = mergeSchemas({
   schemas: [userSchema, pixSchema],
-
 });
 
 export default schema;

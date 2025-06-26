@@ -36,12 +36,12 @@
 - [ ] Configurar Eslint ou outra ferramenta de lint
 - [ ] Criar pagina de login
   - [x] Criar esqueleto
-  - [ ] Funcionalidades
-  - [ ] Criar css
+  - [x] Funcionalidades
+  - [ ] CSS
 - [ ] Criar pagina de registro
   - [x] Criar esqueleto
-  - [ ] Funcionalidades
-  - [ ] Criar css
+  - [x] Funcionalidades
+  - [ ] CSS
 - [ ] Configurar autenticação com Bearer Token
 - [ ] Criar Home para consulta pix (formulário de consulta):
 - [x] Configurar React Relay
