@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import AuthLayout from '../components/AuthLayout';
-import { registerCommit } from '../mutations/RegisterMutation';
+import { registerCommit } from '../relay/mutations/RegisterMutation';
 
 const Register = () => {
   const [email, setEmail] = useState('');

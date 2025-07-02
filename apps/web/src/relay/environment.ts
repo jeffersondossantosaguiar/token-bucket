@@ -1,10 +1,16 @@
-import { Environment, Network, RecordSource, Store } from 'relay-runtime';
+import {
+  Environment,
+  Network,
+  RecordSource,
+  RequestParameters,
+  Store,
+  Variables,
+} from 'relay-runtime';
 
-//TODO adicionar tipagem
-async function fetchQuery(operation, variables) {
+async function fetchResponse(operation: RequestParameters, variables: Variables) {
   const token = localStorage.getItem('token');
 
-  //TODO Pegar a rota via env
+  //TODO Get API URL by .env
   const response = await fetch('http://localhost:3000/graphql', {
     method: 'POST',
     headers: {
@@ -17,10 +23,16 @@ async function fetchQuery(operation, variables) {
     }),
   });
 
-  return response.json();
+  //return response.json();
+
+  const json = await response.json();
+
+  console.log(JSON.stringify(json));
+
+  return json;
 }
 
 export const environment = new Environment({
-  network: Network.create(fetchQuery),
+  network: Network.create(fetchResponse),
   store: new Store(new RecordSource()),
 });

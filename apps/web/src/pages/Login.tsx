@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import AuthLayout from '../components/AuthLayout';
-import { loginCommit } from '../mutations/LoginMutation';
+import { loginCommit } from '../relay/mutations/LoginMutation';
 
 const Login = () => {
   const [email, setEmail] = useState('');

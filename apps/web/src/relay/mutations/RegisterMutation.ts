@@ -1,19 +1,19 @@
 import { commitMutation, graphql } from 'relay-runtime';
-import { environment } from '../relay/environment';
+import { environment } from '../environment';
 
 const mutation = graphql`
-  mutation LoginMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
+  mutation RegisterMutation($email: String!, $password: String!) {
+    createUser(email: $email, password: $password) {
+      id
     }
   }
 `;
 
-export function loginCommit(
+export function registerCommit(
   email: string,
   password: string,
   onCompleted: (response: any) => void,
-  onError: (error: any) => void
+  onError: (error: Error) => void
 ) {
   return commitMutation(environment, {
     mutation,

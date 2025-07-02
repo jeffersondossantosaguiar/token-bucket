@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchPixKey } from '../queries/PixKeyQuery';
+import { fetchPixKey } from '../relay/queries/PixKeyQuery';
 
 const Home = () => {
   const [pixKey, setPixKey] = useState('');
@@ -10,6 +10,7 @@ const Home = () => {
 
     try {
       const data = await fetchPixKey(pixKey);
+
       const pix = data.keyCheck;
 
       if (pix) {

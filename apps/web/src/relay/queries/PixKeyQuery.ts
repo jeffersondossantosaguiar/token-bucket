@@ -1,5 +1,5 @@
 import { fetchQuery, graphql } from 'relay-runtime';
-import { environment } from '../relay/environment';
+import { environment } from '../environment';
 import { PixKeyQuery as PixKeyCheckQueryType } from './__generated__/PixKeyQuery.graphql';
 
 const PixKeyQuery = graphql`
@@ -29,6 +29,8 @@ export async function fetchPixKey(key: string): Promise<PixKeyCheckQueryType['re
   const result = await fetchQuery<PixKeyCheckQueryType>(environment, PixKeyQuery, {
     key,
   }).toPromise();
+
+  console.log(JSON.stringify(result));
 
   if (!result) {
     throw new Error('No data returned from PixKeyQuery');
