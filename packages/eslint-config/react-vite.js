@@ -35,9 +35,10 @@ export const reactViteConfig = [
       },
     },
     rules: {
-      'react/react-in-jsx-scope': 'off', // Não é necessário com a nova transformação JSX
+      'react/react-in-jsx-scope': 0,
       ...pluginReact.configs.recommended.rules,
       ...pluginReactHooks.configs.recommended.rules,
     },
+    z,
   },
 ];

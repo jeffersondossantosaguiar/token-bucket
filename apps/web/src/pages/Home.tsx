@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { fetchPixKey } from '../relay/queries/PixKeyQuery';
+import { PixKeyQuery$data } from '../relay/queries/__generated__/PixKeyQuery.graphql';
 
 const Home = () => {
   const [pixKey, setPixKey] = useState('');
-  const [result, setResult] = useState<any | null>(null);
+  const [result, setResult] = useState<PixKeyQuery$data['keyCheck'] | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ const Home = () => {
       }
     } catch (error) {
       console.error('Erro ao buscar chave Pix:', error);
-      alert('Erro ao buscar chave Pix');
+      alert(error);
     }
   };
 

@@ -46,6 +46,6 @@
 - [x] Criar Home para consulta pix (formulário de consulta):
 - [x] Configurar React Relay
 - [x] Criar query para consulta Pix
-  - [ ] Exibir resultado da transação (sucesso/erro)
+  - [x] Exibir resultado da transação (sucesso/erro)
   - [ ] Adicionar feedback visual e validações
-- [ ] Verificar como faz para tratar os erros no Relay já que ele não exporte `errors` apenas o `data` da consulta.
+- [x] Verificar como faz para tratar os erros no Relay já que ele não exporte `errors` apenas o `data` da consulta.

@@ -25,11 +25,15 @@ async function fetchResponse(operation: RequestParameters, variables: Variables)
 
   //return response.json();
 
-  const json = await response.json();
+  const data = await response.json();
+  const errors = data.errors;
 
-  console.log(JSON.stringify(json));
+  if (errors && errors.length > 0) {
+    console.log({ errors });
+    throw new Error(errors.map((e: Error) => e.message).join(', ')); //TODO create a error handler
+  }
 
-  return json;
+  return data;
 }
 
 export const environment = new Environment({

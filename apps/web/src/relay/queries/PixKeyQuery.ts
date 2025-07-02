@@ -30,8 +30,6 @@ export async function fetchPixKey(key: string): Promise<PixKeyCheckQueryType['re
     key,
   }).toPromise();
 
-  console.log(JSON.stringify(result));
-
   if (!result) {
     throw new Error('No data returned from PixKeyQuery');
   }
